@@ -25,41 +25,41 @@ const AppRouter = () => {
   const { user } = useContext(Context);
   return (
       <Routes>
-        {/*<Route*/}
-        {/*  path={ADMIN_ROUTE}*/}
-        {/*  element={user.isAuth ? <Admin /> : <Navigate to="/" />}*/}
-        {/*  exact*/}
-        {/*/>*/}
-        {/*<Route*/}
-        {/*  path={BASKET_ROUTE}*/}
-        {/*  element={user.isAuth ? <Basket /> : <Navigate to="/" />}*/}
-        {/*  exact*/}
-        {/*/>*/}
-        {/*<Route path={LOGIN_ROUTE} element={<Auth />} exact />*/}
-        {/*<Route path={REGISTER_ROUTE} element={<Auth />} exact />*/}
-        {/*<Route path={SHOP_ROUTE} element={<Shop />} exact />*/}
-        {/*<Route path={DEVICE_ROUTE + "/:id"} element={<DevicePage />} exact />*/}
-        {/*<Route path="*" element={<Navigate replace to="/" />} />*/}
-
-
         <Route
-          path={MAIN_ROUTE}
-          element={<MainPage />}
+          path={ADMIN_ROUTE}
+          element={user.isAuth ? <Admin /> : <Navigate to="/" />}
           exact
         />
         <Route
-          path={TRAVEL_ROUTE}
-          element={<TravelsPage />}
+          path={BASKET_ROUTE}
+          element={user.isAuth ? <Basket /> : <Navigate to="/" />}
           exact
         />
-        <Route path={TRAVEL_ROUTE + "/:id"} element={<TravelPage />} exact />
-        <Route
-          path={SIGHTS_ROUTE}
-          element={<SightsPage />}
-          exact
-        />
-        <Route path={SIGHTS_ROUTE + "/:id"} element={<SightPage />} exact />
+        <Route path={LOGIN_ROUTE} element={<Auth />} exact />
+        <Route path={REGISTER_ROUTE} element={<Auth />} exact />
+        <Route path={SHOP_ROUTE} element={<Shop />} exact />
+        <Route path={DEVICE_ROUTE + "/:id"} element={<DevicePage />} exact />
         <Route path="*" element={<Navigate replace to="/" />} />
+
+
+        {/*<Route*/}
+        {/*  path={MAIN_ROUTE}*/}
+        {/*  element={<MainPage />}*/}
+        {/*  exact*/}
+        {/*/>*/}
+        {/*<Route*/}
+        {/*  path={TRAVEL_ROUTE}*/}
+        {/*  element={<TravelsPage />}*/}
+        {/*  exact*/}
+        {/*/>*/}
+        {/*<Route path={TRAVEL_ROUTE + "/:id"} element={<TravelPage />} exact />*/}
+        {/*<Route*/}
+        {/*  path={SIGHTS_ROUTE}*/}
+        {/*  element={<SightsPage />}*/}
+        {/*  exact*/}
+        {/*/>*/}
+        {/*<Route path={SIGHTS_ROUTE + "/:id"} element={<SightPage />} exact />*/}
+        {/*<Route path="*" element={<Navigate replace to="/" />} />*/}
       </Routes>
   );
 };

@@ -1,27 +1,21 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { Button, Col, Container, Image, Row } from "react-bootstrap";
 
 import star from "../assets/star.png";
 import { Card } from "reactstrap";
+import {useParams} from 'react-router-dom'
+import {fetchOneDevice} from "../http/deviceAPI";
 const DevicePage = () => {
-  const device = {
-    id: 1,
-    name: "first22dss",
-    price: 2344,
-    rating: 5,
-    img:
-      "https://c.wallhere.com/photos/22/27/2560x1600_px_landscape_nature-1077192.jpg!d"
-  };
-  const description = [
-    { id: 1, title: "13klw", description: "92i29i22" },
-    { id: 2, title: "13klw", description: "92i29i22" },
-    { id: 3, title: "13klw", description: "92i29i22" }
-  ];
+  const  [device, setDevice]=useState({info:[]})
+  const {id}=useParams()
+  useEffect(()=>{
+fetchOneDevice(id).then(data=>setDevice(data))
+  },[])
   return (
     <Container className={"mt-3"}>
       <Row>
         <Col md={4}>
-          <Image width={300} height={300} src={device.img} />
+          <Image width={300} height={300} src={process.env.REACT_APP_API_URL+device.img} />
         </Col>
 
         <Col md={4}>
@@ -60,7 +54,7 @@ const DevicePage = () => {
       </Row>
       <Row className={"d-flex flex-column m-3"}>
         <h1>Характиристики</h1>
-        {description.map((info, index) => (
+        {device.info.map((info, index) => (
           <Row
             key={info.id}
             style={{

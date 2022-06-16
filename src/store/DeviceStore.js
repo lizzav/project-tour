@@ -3,41 +3,17 @@ import { makeAutoObservable } from "mobx";
 export default class DeviceStore {
   constructor() {
     this._types = [
-      { id: 1, name: "first" },
-      { id: 2, name: "second" }
     ];
     this._brands = [
-      { id: 1, name: "first22dss" },
-      { id: 2, name: "seconssssd" }
     ];
     this._device = [
-      {
-        id: 1,
-        name: "first22dss",
-        price: 2344,
-        rating: 5,
-        img:
-          "https://c.wallhere.com/photos/22/27/2560x1600_px_landscape_nature-1077192.jpg!d"
-      },
-      {
-        id: 2,
-        name: "first22dddsxxzxss",
-        price: 2344,
-        rating: 5,
-        img:
-          "https://c.wallhere.com/photos/22/27/2560x1600_px_landscape_nature-1077192.jpg!d"
-      },
-      {
-        id: 3,
-        name: "first22ddddss",
-        price: 2344,
-        rating: 5,
-        img:
-          "https://c.wallhere.com/photos/22/27/2560x1600_px_landscape_nature-1077192.jpg!d"
-      }
+
     ];
     this._selectedTypes = {};
     this._selectedBrand = {};
+    this._page=1;
+    this._totalCount=0;
+    this._limit=3
     makeAutoObservable(this);
   }
   setTypes(type) {
@@ -50,10 +26,21 @@ export default class DeviceStore {
     this._device = device;
   }
   setSelectedTypes(types) {
+    this.setPage(1)
     this._selectedTypes = types;
   }
   setSelectedBrand(brand) {
+    this.setPage(1)
     this._selectedBrand = brand;
+  }
+  setPage(page) {
+    this._page = page;
+  }
+  setTotalCount(count) {
+    this._totalCount = count;
+  }
+  setLimit(limit) {
+    this._limit = limit;
   }
   get types() {
     return this._types;
@@ -70,5 +57,15 @@ export default class DeviceStore {
   }
   get selectedBrand() {
     return this._selectedBrand;
+  }
+
+  get page() {
+    return this._page;
+  }
+  get totalCount() {
+    return this._totalCount;
+  }
+  get limit() {
+    return this._limit;
   }
 }
